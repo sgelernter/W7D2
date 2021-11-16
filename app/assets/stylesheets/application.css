@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+html {
+    background-color: lightgrey;
+}
+header h3 {
+    color: rgb(255, 181, 251);
+    background-color: rgb(42, 43, 27);
+    font-family: stencil std, fantasy;
+    font-size: 30px;
+    padding: 5px;
+}
+
+header form, a {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+
+header > a {
+    background-color: lightsteelblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:rgb(75, 23, 117)
+    border-radius: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form input{
+    width: 150px;
+}
+
+form label{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

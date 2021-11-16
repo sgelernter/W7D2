@@ -1,21 +1,21 @@
 class UsersController < ApplicationController 
 
+    before_action :ensure_logged_out, only: [:create, :new]
+
     def new 
-        render :new
+        render :signup
     end
 
     def create 
-        debugger
         user = User.new(user_params)
         if user.save 
-            redirect_to users_url
+            login!(user)
+            redirect_to user_url(user)
         else
             flash.now[:error] = ['User could not be saved']
-            render :new  
+            render :signup  
         end
     end
-
-    
 
     private 
 

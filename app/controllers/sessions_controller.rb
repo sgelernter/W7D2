@@ -1,22 +1,26 @@
 class SessionsController < ApplicationController
-    def log_in 
-    end
 
-    def log_out 
-    end
+    before_action :ensure_logged_in, only: [:destroy]
+    before_action :ensure_logged_out, only: [:new, :create]
 
     def new 
-        render :new 
+        render :login
     end
 
     def create
         @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
-        session[:session_token] = SecureRandom::urlsafe_base64(16)
-        @user.session_token = session[:session_token]
-        @user.save!
-        redirect_to user_url(@user)
+        if @user
+            login!(@user)
+            redirect_to user_url(@user)
+        else 
+            flash[:error] = ['Not valid user credentials']
+            redirect_to new_session_url
+        end
     end
 
     def destroy 
+        current_user.reset_session_token!
+        session[:session_token] = nil
+        render :login
     end
 end
