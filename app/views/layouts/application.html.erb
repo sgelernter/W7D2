@@ -12,16 +12,27 @@
   <body>
     <header>
         <h3> Music Library </h3>
-        <% if logged_in? %>
-          <form action="<%=session_url%>" method= "POST">
-            <input type= "hidden" name= "_method" value= "DELETE">
-            <input type= "submit" value= "Log out">
-          </form>
-        <% else %>
-          <a href="<%=new_user_url%>">Sign up  </a> 
-          <a href="<%=new_session_url%>">Sign in</a>
+        <ul>
+          <% if logged_in? %>
+            <li>
+              <form action="<%=session_url%>" method= "POST">
+                <input type= "hidden" name= "_method" value= "DELETE">
+                <input type= "submit" value= "Log out">
+              </form>
+            </li>
+          <% else %>
+            <li><a href="<%=new_user_url%>">Sign up  </a></li> 
+            <li><a href="<%=new_session_url%>">Sign in</a></li>
+          <% end%>
+          </ul>
+        
+        <% flash.each do |type, msg| %>
+          <div>
+            <%=msg%>
+          </div>
         <% end%>
     </header>
+    
     <br>
     <%= yield %>
   </body>
