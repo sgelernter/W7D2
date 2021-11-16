@@ -1,0 +1,16 @@
+<style>
+h2 {
+    margin: auto 0;
+    display: flex;
+    justify-content: center;
+}
+</style>
+
+<h2> Enter new band info: </h2>
+<br>
+<form action="<%=bands_url%>" method="POST">
+    <label for="bandname">Band name: </label>
+    <input type="text" name="band[name]" id="bandname">
+    <br>
+    <input type="submit" value="Sign on the dotted line">
+</form>

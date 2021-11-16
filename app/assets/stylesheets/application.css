@@ -33,8 +33,9 @@ header form, a {
 header > a {
     background-color: lightsteelblue;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color:rgb(75, 23, 117)
-    border-radius: 100%;
+    color:rgb(75, 23, 117);
+    padding: 2px;
+    border-radius: 50px;
 }
 
 form {
